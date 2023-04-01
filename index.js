@@ -73,20 +73,22 @@ function cumleKur(birinci, ikinci="", ucuncu="", dorduncu="", besinci=""){
 	return birinci+ikinci+ucuncu+dorduncu+besinci;
 }
 
+
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 1 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
-
+console.log(cumleKur("Hello World!"));
 
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 2 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
+console.log(cumleKur("Hello ", "World!"));
 
 
 
 /* (Oto test var) cumleKur fonksiyonuna 5 parametre göndererek "Ben iyi bir yazılımcı olacağım!" stringini elde edin, sonucu `bircumle` değişkenine atayın ve konsolde gözlemleyin */
-var bircumle;
+var bircumle = cumleKur("Ben ", "iyi ","bir ","yazılımcı ","olacağım!")
 
-/* kodlar buraya */
+console.log(bircumle);
 
 
 
@@ -104,11 +106,15 @@ var bircumle;
 	*/
 	
 
-function cumlelereDonustur(/* kodlar buraya */ ){
-	/* kodlar buraya */
-}
+	function cumlelereDonustur(cumleler, string=",") {
+		let yeniDizi = cumleler.map(function(string) { 
+			return string.join(' ');
+	})
+	return yeniDizi;
+	}
+	 console.log(cumlelereDonustur(cumleler, string=","));
 
-
+	  
 
 /* GÖREV 2:
 		paragrafOlustur fonksiyonuna aşağıdakileri uygulayın.
@@ -120,9 +126,15 @@ function cumlelereDonustur(/* kodlar buraya */ ){
 			6. Oluşturulan paragraf döndürülecek
 	*/
 	
-function paragrafOlustur(/* kodlar buraya */ ){
-	/* kodlar buraya */ 
-}
+	function paragrafOlustur(cumleler, cumleKurCallback, cumlelereDonusturCallback ){
+		const dizi2 = cumlelereDonusturCallback(cumleler, " ");
+		const ilkBesEleman= cumleKurCallback(dizi2[1], dizi2[3], dizi2[5], dizi2[7], dizi2[9]);
+		return ilkBesEleman;
+
+	}
+
+	const paragraf = paragrafOlustur(cumleler, cumleKur, cumlelereDonustur);
+	console.log(paragraf);
 
 
 /* 	GÖREV 3:
@@ -130,9 +142,9 @@ function paragrafOlustur(/* kodlar buraya */ ){
 			3a. meyveler dizisinin ilk ve son elemanlarını diziden çıkartın. (.pop ve .shift metodlarını kullanın)
  */
 //3a çözümü
-/* kodlar buraya */
-
-
+console.log (meyveler.pop());
+console.log (meyveler.shift());
+console.log(meyveler);
 
 
 
@@ -141,10 +153,9 @@ function paragrafOlustur(/* kodlar buraya */ ){
 */
 //3b çözümü
 /* kodlar buraya */
-
-
-
-
+console.log(sebzeler.unshift("🐇"));
+console.log(sebzeler.push("🦔"));
+console.log(sebzeler);
 
 
 
@@ -155,8 +166,14 @@ function paragrafOlustur(/* kodlar buraya */ ){
 /* kodlar buraya */
 
 var manav;
-
-
+meyveler.unshift("🍇");
+meyveler.push("🥥");
+sebzeler.shift();
+sebzeler.pop();
+const array1 = meyveler;
+const array2 = sebzeler;
+manav = array1.concat((array2));
+console.log(manav);
 
 
 
@@ -169,13 +186,22 @@ var manav;
 				yani hem :d hem de :D sembolleri 😁'a dönüşmelidir. bunun için (.toUpperCase ve .toLowerCase metotlarından istediğinizi kullanabilirsiniz.)
 			4. elde edilen string döndürülecek
  */
-
-function emojileriDonustur(/* kodlar buraya */){
-/* kodlar buraya */
-
-}
-
-
+			function emojileriDonustur(mesaj, object) {
+				for(let key in object){
+					
+					mesaj = mesaj.replaceAll(key.toUpperCase(), object[key])
+					mesaj = mesaj.replaceAll(key.toLowerCase(), object[key])
+				}
+				return mesaj;
+			}
+			
+				console.log (emojileriDonustur("<3", emojiler));
+				console.log (emojileriDonustur(":)", emojiler));
+				console.log (emojileriDonustur(":(", emojiler));
+				console.log (emojileriDonustur(":p", emojiler));
+				console.log (emojileriDonustur(":o", emojiler));
+				console.log (emojileriDonustur(":D", emojiler));
+				
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 function sa(){
